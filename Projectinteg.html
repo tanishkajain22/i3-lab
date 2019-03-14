@@ -14,39 +14,6 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 
-<style>
-* {box-sizing: border-box;}
-
-.img-comp-container {
-  position: relative;
-  height: 400px; /*should be the same height as the images*/
-}
-
-.img-comp-img {
-  position: absolute;
-  width: auto;
-  height: auto;
-  overflow:hidden;
-  border:thick black;
-}
-
-.img-comp-img img {
-  display:block;
-  vertical-align:middle;
-}
-
-.img-comp-slider {
-  position: absolute;
-  z-index:9;
-  cursor: ew-resize;
-  /*set the appearance of the slider:*/
-  width: 40px;
-  height: 40px;
-  background-color: rgb(179, 255, 0);
-  opacity: 0.5;
-  border-radius: 80%;
-}
-</style>
 <script>
     $(document).ready(function(){
       $("button").click(function(){
