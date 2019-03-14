@@ -1,0 +1,104 @@
+body {
+  font-family: "Lato", sans-serif;
+  background-image: url("lab.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+}
+
+.navbar a {
+  float: left;
+  padding: 12px;
+  color:rgb(68, 4, 4);
+  text-decoration: none;
+  font-size: 20px;
+}
+
+.active {
+  background-color: rgb(5, 5, 5);
+}
+.navbar a:hover {
+  background-color:rgba(235, 235, 233, 0.664);
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color:rgb(12, 12, 12);
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #cccaca;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #0a0a0a;
+
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+#main {
+  transition: margin-right.5s;
+  padding: 16px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+.footer {
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   height:20%;
+   background-color:rgb(185, 255, 220);;
+   color:rgb(1,1,1);
+   border-radius:40px; 
+}
+
+#panel, #flip {
+  padding: 5px;
+  text-align: center;
+  background-color:rgb(255,255,255);
+  border: solid 1px #c3c3c3;
+  border-radius:10px; 
+}
+
+#panel {
+  padding: 50px;
+  display: none;
+}
+
+
+#panel1, #flip1 , #panel2, #flip2, #panel3, #flip3,#panel4, #flip4,#panel5, #flip5 {
+  padding: 5px;
+  text-align: center;
+  background-color:rgb(255,255,255);
+  border: solid 1px #c3c3c3;
+  border-radius:10px; 
+}
+
+#panel1, #panel2, #panel3,#panel4,#panel5  {
+  padding: 50px;
+  display: none;
+}
