@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>The I-cube Project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+<style>
+* {box-sizing: border-box;}
+
+.img-comp-container {
+  position: relative;
+  height: 400px; /*should be the same height as the images*/
+}
+
+.img-comp-img {
+  position: absolute;
+  width: auto;
+  height: auto;
+  overflow:hidden;
+  border:thick black;
+}
+
+.img-comp-img img {
+  display:block;
+  vertical-align:middle;
+}
+
+.img-comp-slider {
+  position: absolute;
+  z-index:9;
+  cursor: ew-resize;
+  /*set the appearance of the slider:*/
+  width: 40px;
+  height: 40px;
+  background-color: rgb(179, 255, 0);
+  opacity: 0.5;
+  border-radius: 80%;
+}
+</style>
+<script>
+    $(document).ready(function(){
+      $("button").click(function(){
+        $("#div1").fadeIn();
+        $("#div2").fadeIn("slow");
+        $("#div3").fadeIn(3000);
+    
+      });
+    });
+    </script>
+<script>
+$(document).ready(function(){
+  $("#flip").click(function(){
+    $("#panel").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip1").click(function(){
+    $("#panel1").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip2").click(function(){
+    $("#panel2").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip3").click(function(){
+    $("#panel3").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip4").click(function(){
+    $("#panel4").slideToggle("slow");
+  });
+});
+
+$(document).ready(function(){
+  $("#flip5").click(function(){
+    $("#panel5").slideToggle("slow");
+  });
+});
+
+
+function initComparisons() {
+  var x, i;
+  /*find all elements with an "overlay" class:*/
+  x = document.getElementsByClassName("img-comp-overlay");
+  for (i = 0; i < x.length; i++) {
+    /*once for each "overlay" element:
+    pass the "overlay" element as a parameter when executing the compareImages function:*/
+    compareImages(x[i]);
+  }
+  function compareImages(img) {
+    var slider, img, clicked = 0, w, h;
+    /*get the width and height of the img element*/
+    w = img.offsetWidth;
+    h = img.offsetHeight;
+    /*set the width of the img element to 50%:*/
+    img.style.width = (w / 2) + "px";
+    /*create slider:*/
+    slider = document.createElement("DIV");
+    slider.setAttribute("class", "img-comp-slider");
+    /*insert slider*/
+    img.parentElement.insertBefore(slider, img);
+    /*position the slider in the middle:*/
+    slider.style.top = (h / 2) - (slider.offsetHeight / 2) + "px";
+    slider.style.left = (w / 2) - (slider.offsetWidth / 2) + "px";
+    /*execute a function when the mouse button is pressed:*/
+    slider.addEventListener("mousedown", slideReady);
+    /*and another function when the mouse button is released:*/
+    window.addEventListener("mouseup", slideFinish);
+    /*or touched (for touch screens:*/
+    slider.addEventListener("touchstart", slideReady);
+    /*and released (for touch screens:*/
+    window.addEventListener("touchstop", slideFinish);
+    function slideReady(e) {
+      /*prevent any other actions that may occur when moving over the image:*/
+      e.preventDefault();
+      /*the slider is now clicked and ready to move:*/
+      clicked = 1;
+      /*execute a function when the slider is moved:*/
+      window.addEventListener("mousemove", slideMove);
+      window.addEventListener("touchmove", slideMove);
+    }
+    function slideFinish() {
+      /*the slider is no longer clicked:*/
+      clicked = 0;
+    }
+    function slideMove(e) {
+      var pos;
+      /*if the slider is no longer clicked, exit this function:*/
+      if (clicked == 0) return false;
+      /*get the cursor's x position:*/
+      pos = getCursorPos(e)
+      /*prevent the slider from being positioned outside the image:*/
+      if (pos < 0) pos = 0;
+      if (pos > w) pos = w;
+      /*execute a function that will resize the overlay image according to the cursor:*/
+      slide(pos);
+    }
+    function getCursorPos(e) {
+      var a, x = 0;
+      e = e || window.event;
+      /*get the x positions of the image:*/
+      a = img.getBoundingClientRect();
+      /*calculate the cursor's x coordinate, relative to the image:*/
+      x = e.pageX - a.left;
+      /*consider any page scrolling:*/
+      x = x - window.pageXOffset;
+      return x;
+    }
+    function slide(x) {
+      /*resize the image:*/
+      img.style.width = x + "px";
+      /*position the slider:*/
+      slider.style.left = img.offsetWidth - (slider.offsetWidth / 2) + "px";
+    }
+  }
+}
+
+</script>
+
+<link href="https://www.cssscript.com/wp-includes/css/sticky.css" rel="stylesheet" type="text/css">
+<link href="projectstyle.css" rel="stylesheet" type="text/css">
+
+
+  </head>
+<body>
+  <nav class="navbar navbar-expand-sm bg-white">
+  <!-- Brand/logo -->
+  <a class="navbar-brand" href="#">
+      <button><img src="icube1.jpg" alt="logo" style="width:150px;">
+      </a></button>
+    <div id="div1" style="display: none; padding-right:50px;"><h4>Innovation</h4> </div>
+    <div id="div2" style="display: none; padding-right:50px;"><h4>Incubation</h4> </div>
+    <div id="div3" style="display: none;"><h4>Industry</h4></div>
+     <ul class="navbar-nav ml-auto">
+      <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+    <a href="#">About Us</a>
+    <a href="#">Contact Us</a>
+  </div>
+  
+  
+  <div id="mySidenav" class="sidenav">
+    <a href="javascript:void(0)" class="closebtn1" onclick="closeNav1()">&times;</a>
+    <a href="#">Bootcamps</a>
+    <a href="#">Projects</a>
+  </div>
+  
+  
+  <div id="main">
+    <a href=""><i class="fa fa-fw fa-user"></i>Log In</a>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav1()"><i class="fas fa-search"></i></span>
+    <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
+  </div>
+  <script>
+  function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+    document.getElementById("main").style.marginright = "250px";
+  }
+  
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("main").style.marginright= "0";
+  }
+  
+  
+  </script>
+  </ul>
+  </nav>
+<br><br>
+
+<center><h1 style="font-family: algerian ; color:white">Compare old IC & new I CUBE</h1>
+
+<p style="font-family: algerian ; color:white">Click and slide the blue slider to compare two LABS:</p>
+<div class="col-sm-4"></div>
+<div class="col-sm-4">
+<div class="img-comp-container">
+  <div class="img-comp-img">
+    <img src="iclab.jpg" width="600" height="400" >
+  </div>
+  <div class="img-comp-img img-comp-overlay">
+    <img src="ic.jpg" width="600" height="400">
+  </div>
+</div>
+</div>
+<div class="col-sm-4"></div>
+</center>
+<script>
+    /*Execute a function that will execute an image compare function for each element with the img-comp-overlay class:*/
+    initComparisons();
+    </script>
+
+<hr><hr>
+
+
+<!-- Technology stack -->
+<center>
+  <h2 style="font-family: algerian; color:thistle">I Cube Technology</h2>
+</center>
+<div class="container-fluid">
+
+    <div class="card-group">
+        <div class="card">
+      <img class="img-fluid" src="./web.jpg" alt="1" style="width:100%">
+          <div class="card-body">
+        <button type="button" class="btn btn-outline-secondary">
+        <h3 class="card-title">Web Development</h3>
+        <p class="card-text"> Web development is the work involved in developing a web site for the Internet or an intranet.
+        Web development can range from developing a simple single static page of plain text to complex web-based internet application.</button>
+        <br><br><br>
+        
+        <div class="w3-container">
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>Web development takes into account many security considerations, such as data entry error checking through forms, filtering output, and encryption. Malicious practices such as SQL injection can be executed by users with ill intent yet with only primitive knowledge of web development as a whole. Scripts can be used to exploit websites by granting unauthorized access to malicious users that try to collect information such as email addresses, passwords and protected content like credit card numbers.
+        </p>
+            
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+       
+          </div>
+        </div>
+      
+        <div class="card" >
+      <img class="img-fluid" src="./and.png" alt="1" style="width:100%">
+          <div class="card-body"><br>
+       <button type="button" class="btn btn-outline-secondary">
+           <h3 class="card-title">Android</h3>
+        <p class="card-text">Android is a mobile operating system developed by Google.
+        It is based on a modified version of the Linux kernel and other open source software, and is designed primarily 
+        for touchscreen mobile devices such as smartphones and tablets.It is a mobile operating system developed by Google. </button>
+      <br><br>
+         <div class="w3-container">
+     
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>Android's default user interface is mainly based on direct manipulation, using touch inputs that loosely correspond to real-world actions, like swiping, tapping, pinching, and reverse pinching to manipulate on-screen objects, along with a virtual keyboard.[65] Game controllers and full-size physical keyboards are supported via Bluetooth or USB
+        </p>
+            
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+          </div>
+        </div>
+      
+      <div class="card" >
+      <img class="img-fluid" src="./robo.jpg" alt="1" style="width:100%">
+          <div class="card-body"><br>
+        <button type="button" class="btn btn-outline-secondary">
+           <h3 class="card-title">Robotics</h3>
+        <p class="card-text">Robotics is an interdisciplinary branch of engineering and science that includes mechanical engineering, 
+        electronic engineering,computer science,and others. Robotics deals with the design,
+        construction,and use of robots, as well as computer systems for their control. </button>
+        <br><br>
+         <div class="w3-container">
+     
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>These technologies are used to develop machines that can substitute for humans and replicate human actions. Robots can be used in many situations and for lots of purposes, but today many are used in dangerous environments (including bomb detection and deactivation), manufacturing processes, or where humans cannot survive
+        </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+          </div>
+        </div>
+      
+        
+        <div class="card">
+      <img class="img-fluid" src="./IOT.jpeg" alt="1" style="width:100%">
+          <div class="card-body">
+        <button type="button" class="btn btn-outline-secondary">
+        <h3 class="card-title">IOT</h3>
+        <p class="card-text">The internet of things,is a system of interrelated computing devices,mechanical and digital machines,etc
+         that are provided with unique identifiers and the ability to transfer data over a network without
+        requiring human-to-human or human-to-computer interaction.</button>
+        <br><br>
+         <div class="w3-container">
+     
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>The IoT involves extending Internet connectivity beyond standard devices, such as desktops, laptops, smartphones and tablets, to any range of traditionally dumb or non-internet-enabled physical devices and everyday objects. Embedded with technology, these devices can communicate and interact over the Internet, and they can be remotely monitored and controlled.
+        </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+        </div>
+        </div>  
+      
+       </div>
+      <div class="card-group">
+        <div class="card">
+      <img class="img-fluid" src="./ar vr.jpg" alt="1" style="width:100%">
+      <div class="card-body">
+          <button type="button" class="btn btn-outline-secondary">
+        <h3 class="card-title">AR/VR</h3>
+        <p class="card-text">Augmented reality (AR) adds digital elements to a live view often by using the camera on a smartphone.
+        Virtual reality (VR) implies a complete immersion experience that shuts out the physical world.</button>
+        <br><br><br><br>
+         <div class="w3-container">
+      
+     
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>Augmented reality is used to enhance natural environments or situations and offer perceptually enriched experiences. With the help of advanced AR technologies (e.g. adding computer vision and object recognition) the information about the surrounding real world of the user becomes interactive and digitally manipulable. Information about the environment and its objects is overlaid on the real world.
+        </p>
+           
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>     
+          </div>
+        </div>
+      
+        <div class="card">
+      <img class="img-fluid" src="./cloud.jpg" alt="1" style="width:100%">
+          <div class="card-body">
+        <button type="button" class="btn btn-outline-secondary">
+       <h3 class="card-title">Cloud Computing</h3>
+        <p class="card-text">Cloud computing makes computer system resources, especially storage and computing power,
+      available on demand without direct active management by the user.  
+      If the connection to the user is relatively close, it may be designated an Edge server.</button>
+      <br><br>
+         <div class="w3-container">
+      
+     
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>Advocates of public and hybrid clouds note that cloud computing allows companies to avoid or minimize up-front IT infrastructure costs. Proponents also claim that cloud computing allows enterprises to get their applications up and running faster, with improved manageability and less maintenance, and that it enables IT teams to more rapidly adjust resources to meet fluctuating and unpredictable demand
+        </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+          </div>
+        </div>
+      
+        <div class="card">
+      <img class="img-fluid" src="./int.jpg" alt="1" style="width:100%">
+          <div class="card-body">
+        <button type="button" class="btn btn-outline-secondary">
+       <h3 class="card-title">Artificial Intelligence</h3>
+        <p class="card-text">Artificial Intelligence (AI) is an area of computer science that emphasizes the creation of intelligent machines
+        that work and react like humans.Some of the activities computers with artificial intelligence are designed for include: Speech recognition.</button>
+        <br><br>
+         <div class="w3-container">
+      
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>The scope of AI is disputed: as machines become increasingly capable, tasks considered as requiring "intelligence" are often removed from the definition, a phenomenon known as the AI effect, leading to the quip in Tesler's Theorem, "AI is whatever hasn't been done yet."[4] For instance, optical character recognition is frequently excluded from "artificial intelligence", having become a routine technology.
+        </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+          </div>
+        </div>
+    
+      <div class="card">
+      <img class="img-fluid" src="./mach.jpg" alt="1" style="width:100%">
+          <div class="card-body">
+        <button type="button" class="btn btn-outline-secondary">
+        <h3 class="card-title">Machine Learning</h3>
+        <p class="card-text">Machine learning (ML) is the scientific study of algorithms and statistical models that 
+        computer systems use to effectively perform a specific task without using explicit instructions,
+        relying on patterns and inference instead.  </button>
+        <br><br>
+         <div class="w3-container">
+      
+      <div class="w3-dropdown-hover w3-blue">see more
+        <div class="w3-dropdown-content w3-card-4" style="width:250px">
+          
+          <div class="w3-container">
+            <p>Machine learning tasks are classified into several broad categories. In supervised learning, the algorithm builds a mathematical model from a set of data that contains both the inputs and the desired outputs. For example, if the task were determining whether an image contained a certain object, the training data for a supervised learning algorithm would include images with and without that object.
+        </p>
+          </div>
+        </div>
+      </div>
+    
+    </div>
+    
+        </p>
+          </div>
+        </div>
+     </div>
+       
+      
+    </div>
+    <hr><hr>
+
+<!-- footer about mentors -->
+<center><h1 style="font-family: Algerian; color:black">Mentors</h1></center>
+<div>
+<div class="footer">
+  <div class="row">
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip"><img src="mentor.png" alt="" style="height:40px;">Mr.Aaditya Maheshwari</div>
+<div id="panel"><p class="h-120">MS <BR> Google Developer </p>
+<p><small>Google,GDG<br />
+</small></p>
+</div>
+</div>
+</div>
+
+<br><br>
+
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip1"><img src="mentor.png" alt="" style="height:40px;">Mr.Ayush Gupta</div>
+<div id="panel1"><p class="h-120">M. Tech <br> Bits Pilani</p>
+<p><small>Google,GDG<br />
+</small></p></div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip2"><img src="mentor.png" alt="" style="height:40px;">Mr.Abhishek Sharma</div>
+<div id="panel2"><p class="h-120"></p>
+<p><small>Google,GDG<br />
+</small></p>
+</div>
+</div>
+</div>
+<br><hr>
+
+
+
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip3"><img src="mentor.png" alt="" style="height:40px;">Mr.Nishit Jain</div>
+<div id="panel3"><p class="h-120">The really awesome thing about going to 42 is you feel like you’re walking into a school from the future.</p>
+<p><small>Google,GDG<br />
+</small></p>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip4"><img src="mentor.png" alt="" style="height:40px;">Mr.Yogendra Solanki</div>
+<div id="panel4"><p class="h-120">The really awesome thing about going to 42 is you feel like you’re walking into a school from the future.</p>
+<p><small>Google,GDG<br />
+</small></p>
+</div>
+</div>
+</div>
+
+
+
+<div class="col-md-4">
+  <div class="thumbnail">
+  <div id="flip5"><img src="mentor.png" alt="" style="height:40px;">Mr.Rajeev</div>
+<div id="panel5"><p class="h-120">The really awesome thing about going to 42 is you feel like you’re walking into a school from the future.</p>
+<p><small>Google,GDG<br />
+</small></p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<hr><hr>
+</body>
+</html>
